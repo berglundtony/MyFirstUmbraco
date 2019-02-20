@@ -1,0 +1,42 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage
+@{
+    var umbracoHelper = new Umbraco.Web.UmbracoHelper(UmbracoContext.Current);
+    var photo = Model.Content.GetPropertyValue<IPublishedContent>("backgroundImage");
+    var logo = Model.Content.GetPropertyValue<IPublishedContent>("logotype");
+    //var currentSite = CurrentPage.AncestorOrSelf("HomePage");
+    var currentSite = CurrentPage.AncestorOrSelf(1);
+    //var isHome = CurrentPage.Site().Id == CurrentPage.Id ? "active" : null;
+    //var selection = CurrentPage.Site().Children.Where("Visible");
+
+}
+<div id="header-container">
+    <header class="wrapper clearfix"></header>
+    <div class="header">
+        <div class="container">
+            <img src="@logo.Url" class="logo" />
+        </div>
+    </div>
+</div>
+
+
+
+<header class="wrapper clearfix">
+    <nav>
+        <ul>
+            <li><a href="@CurrentPage.Site().Url">@CurrentPage.Site().Name</a></li>
+
+            @foreach (var child in currentSite.Children())
+            {
+                <li><a href="@child.Url">@child.Name</a></li>
+            }
+        </ul>
+    </nav>
+</header>
+<style>
+        .header
+        {
+            background-image: url(@photo.Url);
+            position: relative;
+            height: 350px;
+        }
+</style>

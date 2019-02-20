@@ -1,0 +1,14 @@
+﻿@inherits 
+<div class="main-nav">
+    <div class="container">
+        <nav role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+            @{ Html.RenderPartial("_MenuItems", new MenuItems
+                {
+                    Pages = CurrentSite.Children.FilterInvalidPages(),
+                    CurrentPage = Model.Content,
+                    Type = "main"
+                });}
+        </nav>
+        @{ Html.RenderPartial("_TopLinks");}
+    </div>
+</div>

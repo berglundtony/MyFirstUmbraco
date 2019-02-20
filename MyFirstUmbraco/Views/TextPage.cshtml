@@ -1,0 +1,12 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.TextPage>
+@using ContentModels = Umbraco.Web.PublishedContentModels;
+@{
+    Layout = "Shared/_Layout.cshtml";
+
+}
+
+<div class="container">
+    <span>
+        @Model.Content.GetPropertyValue("textField")
+    </span>
+</div>
