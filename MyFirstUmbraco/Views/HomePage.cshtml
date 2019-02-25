@@ -1,41 +1,40 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.HomePage>
-@using ContentModels = Umbraco.Web.PublishedContentModels;
+﻿@using Umbraco.Web.PublishedContentModels;
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<HomePage>
+
 @{
     Layout = "Shared/_Layout.cshtml";
-    var archs = Model.Content.GetPropertyValue<Archetype.Models.ArchetypeModel>("archetypes");
+    var archs = Model.GetPropertyValue<Archetype.Models.ArchetypeModel>("archetypes");
+
 }
 
 <div class="container">
     <span>
-        @Model.Content.GetPropertyValue("pageTitle")
-    </span>
-    <span>
-        @Model.Content.GetPropertyValue("bodyText")
+        @*@Model.Content.GetPropertyValue("bodyText")*@
+        @Model.BodyText
     </span>
 </div>
-
+<div class="row clearfix"></div>
 <div class="container">
 
     @foreach(var arch in archs)
-    {
-        var link = arch.GetValue<IPublishedContent>("link");
-        var image = arch.GetValue<IPublishedContent>("image");
-        var text = arch.GetValue<string>("text");
+            {
+                var link = arch.GetValue<IPublishedContent>("link");
+                var image = arch.GetValue<IPublishedContent>("image");
+                var text = arch.GetValue<string>("text");
 
-    <a href="@link.Url" class="imageBlurb">
-        <div class="rwd-puff-wrapper clearfix">
-            <div class="rwd-puff">
-                <div class="rwd-puff__content">
-                    <div class="rwd-puff__top">
-                        <img src="@image.Url" alt="" />
-                    </div>
-                    <div class="rwd-puff__bottom">
-                        @Html.Raw(@text)
+            <a href="@link.Url" class="imageBlurb">
+                <div class="rwd-puff-wrapper">
+                    <div class="rwd-puff">
+                        <div class="rwd-puff__content">
+                            <div class="rwd-puff__top">
+                                <span class="puff-image" style="background-image:url(@image.Url);"></span>
+                                <div class="rwd-puff__bottom">
+                                    @Html.Raw(@text)
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </a>
-    }
-
+            </a>
+        }
 </div>

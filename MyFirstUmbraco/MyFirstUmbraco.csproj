@@ -313,7 +313,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\Site.css" />
     <Content Include="Content\StyleSheet.css" />
     <Content Include="css\typo.css" />
     <Content Include="default.aspx" />
@@ -480,7 +479,9 @@
     <Content Include="Umbraco_Client\Ui\json2.js" />
     <Content Include="Umbraco_Client\Ui\knockout.js" />
     <Content Include="Umbraco_Client\Ui\knockout.mapping.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -526,7 +527,6 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Partials\View.cshtml" />
     <Content Include="Views\TextPage.cshtml" />
-    <Content Include="Views\Master.cshtml" />
     <Content Include="Views\IndexMvc.cshtml" />
     <Content Include="Views\Partials\_Header.cshtml" />
     <None Include="Web.Debug.config">
@@ -545,8 +545,8 @@
     <Folder Include="Views\Partials\Layout\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\git\Umbraco.Boilerplate\Umbraco.Boilerplate\Boilerplate.Core\MyFirstUmbraco.Core.csproj">
-      <Project>{256612b1-dd01-49ee-8ae2-db9713f26210}</Project>
+    <ProjectReference Include="..\MyFirstUmbraco.Core\MyFirstUmbraco.Core.csproj">
+      <Project>{e654942b-3d5a-4a98-bc0c-0fee11eb07d4}</Project>
       <Name>MyFirstUmbraco.Core</Name>
     </ProjectReference>
   </ItemGroup>

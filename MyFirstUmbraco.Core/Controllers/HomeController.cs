@@ -1,30 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web.Mvc;
+using Umbraco.Web;
+using Umbraco.Web.Mvc;
+using MyFirstUmbraco.Core.ViewModels;
 
 namespace MyFirstUmbraco.Core.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : RenderMvcController
     {
         public ActionResult Index()
         {
-            return View();
-        }
+            var model = new HomeViewModel(CurrentPage)
+            {
+                MyTextArea = CurrentPage.GetPropertyValue<string>("bodyText")
+            };
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            return CurrentTemplate(model);
         }
     }
 }
